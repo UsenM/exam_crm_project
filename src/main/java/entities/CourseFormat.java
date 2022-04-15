@@ -1,8 +1,10 @@
 package entities;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class CourseFormat extends BaseEntity {
 
     String format;

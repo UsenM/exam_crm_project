@@ -1,6 +1,7 @@
 import dao.CourseDao;
 import dao.CourseFormatDao;
 import dao.daoutil.DaoContext;
+import dao.daoutil.Log;
 import entities.Course;
 import entities.CourseFormat;
 
@@ -13,7 +14,6 @@ public class Main {
         /** Course Format Creating */
         CourseFormatDao courseFormatDao = (CourseFormatDao) DaoContext.autowired("CourseFormatDao");
 
-
         CourseFormat onlineMeetup = CourseFormat.builder()
                 .format("ONLINE MEETUP")
                 .lessonsPerWeek(3)
@@ -21,18 +21,19 @@ public class Main {
                 .courseDurationWeeks(24)
                 .isOnline(true).
                 build();
-        courseFormatDao.save(onlineMeetup);
+        Log.message("Saved course format: " + courseFormatDao.save(onlineMeetup));
+
         CourseFormat onlineMeetUpFromDB = courseFormatDao.findAll().get(courseFormatDao.findAll().size() - 1);
 
 
         CourseFormat bootcamp = CourseFormat.builder()
                 .format("BOOTCAMP")
                 .lessonsPerWeek(5)
-                .lessonDuration(LocalTime.of(3, 00))
+                .lessonDuration(LocalTime.of(3, 0))
                 .courseDurationWeeks(12)
                 .isOnline(false).
                 build();
-        courseFormatDao.save(bootcamp);
+        Log.message("Saved course format: " + courseFormatDao.save(bootcamp));
         CourseFormat bootcampFromDB = courseFormatDao.findAll().get(courseFormatDao.findAll().size() - 1);
 
 
@@ -43,13 +44,12 @@ public class Main {
                 .courseDurationWeeks(18)
                 .isOnline(false).
                 build();
-        courseFormatDao.save(ordinary);
+        Log.message("Saved course format: " + courseFormatDao.save(ordinary));
         CourseFormat ordinaryFromDB = courseFormatDao.findAll().get(courseFormatDao.findAll().size() - 1);
 
 
         /** Course  Creating */
         CourseDao courseDao = (CourseDao) DaoContext.autowired("CourseDao");
-
         Course java = Course.builder()
                 .name("JAVA")
                 .price(15000)
@@ -70,7 +70,6 @@ public class Main {
                 .courseFormat(onlineMeetUpFromDB)
                 .build();
         courseDao.save(python);
-
 
         courseDao.findAll().forEach(System.out::println);
     }

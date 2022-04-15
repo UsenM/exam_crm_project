@@ -11,13 +11,11 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PROTECTED)
 
 public class BaseEntity {
-    protected Long id;
-    protected LocalDateTime dateCreated;
-
+    Long id;
+    LocalDateTime dateCreated;
 
     public BaseEntity() {
     }
-
 
     public BaseEntity(Long id, LocalDateTime dateCreated) {
         this.id = id;

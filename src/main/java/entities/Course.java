@@ -1,15 +1,17 @@
 package entities;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
 @NoArgsConstructor
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class Course extends BaseEntity {
     String name;
     double price;
